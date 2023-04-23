@@ -44,6 +44,6 @@ simulator = qiskit.Aer.get_backend('unitary_simulator') # statevector describes 
 result = qiskit.execute(circuit, backend = simulator).result()
 unitary = result.get_unitary()
 
-print(unitary.data)     # printanje matrice operatora koji predstavlja NOT u ovom slučaju
+print(unitary.data)     # printanje matrice operatora koji predstavlja NOT u ovom slučaju   (j jer kompleksni brojevi)
 
 input("Press Enter to close the window...")
