@@ -18,7 +18,7 @@ simulator = qiskit.Aer.get_backend('statevector_simulator') # statevector descri
 result = qiskit.execute(circuit, backend = simulator).result()
 statevector = result.get_statevector()
 
-print(statevector)
+print(statevector)      # rezultat predstavlja vektor dobiven kao rezultat djelovanja kvantnog logičkog kruga
 circuit.draw(output="mpl").show()
 
 
@@ -30,7 +30,8 @@ circuit.measure([0], [0])
 simulator = qiskit.Aer.get_backend('qasm_simulator')
 result = qiskit.execute(circuit, backend = simulator, shots = 1024).result()
 counts = result.get_counts()
-plot_histogram([counts]).show()     # prikaz rezultata mjerenja
+plot_histogram([counts]).show()     # prikaz rezultata mjerenja => u savršenom simulatoru to će i biti u 100% slučajeva |1>
+                                    # no superposition nor entanglement
 
 
 
@@ -39,7 +40,7 @@ plot_histogram([counts]).show()     # prikaz rezultata mjerenja
 circuit = qiskit.QuantumCircuit(1, 1)       # iz nekog razloga trebalo je ponovno tu napisati kod za circuit? Možda se mijenjalo nakon mjerenja itd
 circuit.x(0)
 
-simulator = qiskit.Aer.get_backend('unitary_simulator') # statevector describes the quantum state of circuit qubits
+simulator = qiskit.Aer.get_backend('unitary_simulator') 
 
 result = qiskit.execute(circuit, backend = simulator).result()
 unitary = result.get_unitary()
