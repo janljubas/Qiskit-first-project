@@ -1,5 +1,16 @@
 import qiskit
+from qiskit.visualization import plot_histogram
 
+def extract_q2(original_dict):
+
+    result_dict = {str(int(k[0])): v for k, v in original_dict.items()}
+
+    result_dict = {key: 0 for key in result_dict}
+
+    for key, value in original_dict.items():
+        result_dict[key[0]] += value
+    
+    return result_dict
 
 '''   THEORY
 
@@ -63,6 +74,18 @@ circuit.draw(output='mpl').show()
 print("The whole quantum circuit for Quantum Teleportation: \n")
 print(circuit.draw())
 # now q2 contains the exact state of the q0 in the beginning!
+
+# checking the results: measuring q2
+
+circuit.measure([2], [2])
+
+simulator = qiskit.Aer.get_backend('qasm_simulator')
+result = qiskit.execute(circuit, backend = simulator, shots = 10000).result()
+counts = result.get_counts()
+
+plot_histogram(counts).show()
+
+print("Measurements:", extract_q2(counts))   # notice that all q2 measurements are equal to 1!
 
 
 input("Press Enter to close the window...")
