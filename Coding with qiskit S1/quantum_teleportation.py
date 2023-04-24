@@ -37,7 +37,7 @@ circuit = qiskit.QuantumCircuit(3, 3)
 # circuit.draw(output = 'mpl').show()
 
 
-# step 0: setting a value of |φ⟩ to |1⟩ , but it could be any value
+# step 0: setting a value of |φ⟩ to |1⟩ , but it could be any value (for example, Hadamard gate)
 circuit.x(0)        
 circuit.barrier()   # now (after the barrier) |φ⟩ = |1⟩ and we want to copy it to the q2
 # circuit.draw(output='mpl').show()
