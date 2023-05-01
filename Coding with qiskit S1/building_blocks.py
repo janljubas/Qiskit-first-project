@@ -18,7 +18,7 @@ simulator = qiskit.Aer.get_backend('statevector_simulator') # statevector descri
 result = qiskit.execute(circuit, backend = simulator).result()
 statevector = result.get_statevector()
 
-print(statevector)      # rezultat predstavlja vektor dobiven kao rezultat djelovanja kvantnog logičkog kruga
+print(statevector)      # rezultat predstavlja vektor dobiven kao rezultat djelovanja kvantnog logičkog kruga -> NOTE: returns statevector
 circuit.draw(output="mpl").show()
 
 
@@ -27,8 +27,8 @@ circuit.draw(output="mpl").show()
 plot_bloch_multivector(statevector).show()      # prikaz Blochovom sferom
 
 circuit.measure([0], [0])
-simulator = qiskit.Aer.get_backend('qasm_simulator')
-result = qiskit.execute(circuit, backend = simulator, shots = 1024).result()
+simulator = qiskit.Aer.get_backend('qasm_simulator')    # unlike statevector sim, here we must put the number of shots --> distribution information
+result = qiskit.execute(circuit, backend = simulator, shots = 1024).result()    # NOTE: returns the counts!
 counts = result.get_counts()
 plot_histogram([counts]).show()     # prikaz rezultata mjerenja => u savršenom simulatoru to će i biti u 100% slučajeva |1>
                                     # no superposition nor entanglement
