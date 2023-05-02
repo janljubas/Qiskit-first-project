@@ -24,7 +24,7 @@ for index, trial_element in enumerate(my_list):
 
 
 
-''' QUANTUM APPROACH (  O(sqrt(N)) ) '''
+''' QUANTUM APPROACH (  O(sqrt(N)) )        -> theory details in notebook and Umesh Vazirani lectures '''
 
 # define the oracle circuit (in this case, only a controlled-Z gate)
 oracle = qiskit.QuantumCircuit(2, name = 'oracle')
